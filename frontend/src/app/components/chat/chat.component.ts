@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import { ChatService } from 'src/app/services/chat/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +15,7 @@ export class ChatComponent {
 
   @ViewChild('scrollContainer', { static: false }) private scrollContainer!: ElementRef;
 
-  constructor(){}
+  constructor(private _apiCallServices : ChatService,){}
 
   refresh(){
     window.location.reload();
@@ -33,7 +34,9 @@ export class ChatComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
-  
+
+    
+
   }
 
   preQues1(){

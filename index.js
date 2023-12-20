@@ -49,10 +49,11 @@ app.post('/text-query', async (req, res) => {
     const responses = await sessionClient.detectIntent(request);
 
     const result = responses[0].queryResult;
-    res.json({ response: result.fulfillmentText });
+    res.json({ response: result.fulfillmentText, "status": "success" });
   } catch (error) {
     console.error('Error processing the request:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ "status": "timeout" , "message": "Internal server error. Please try again later."});
+    
   }
 });
 

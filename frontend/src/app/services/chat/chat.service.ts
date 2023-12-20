@@ -11,6 +11,7 @@ export class ChatService {
   constructor(private http: HttpClient) { }
   
   rootURL3 = "https://red-violet-horse-cape.cyclic.app/";  
+  dialogflowAPI = "https://weak-gold-wasp-hose.cyclic.app/";
 
   mhbAdvisorAPI( firstName: string,  lastName: string, email: string, phoneNumber: string, streetAddress: string, ownedProperty: string, sizeProperty: string, numberOfBedroom: string, numberOfBathroom: string, desiredSellingPrice: string, 
     currentCondition: string, motiveSellProperty: string, propertyType: string, sellingTimeline: string): Observable<any> {
@@ -33,8 +34,10 @@ export class ChatService {
   }
 
 
-  getFaqDataFromPodio(id: string): Observable<any> {
-    return this.http.get<any>(this.rootURL3 + "michael-the-home-buyer/faqs/"+ id).pipe(catchError(this.errorHandler));
+  getResponseFromChatbot(text: string): Observable<any> {
+    return this.http.post<any>(this.rootURL3 + "text-query", {
+      text: text
+    }).pipe(catchError(this.errorHandler));
   }
 
   
