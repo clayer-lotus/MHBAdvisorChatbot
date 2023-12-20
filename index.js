@@ -56,6 +56,11 @@ app.post('/text-query', async (req, res) => {
   }
 });
 
+// Route for root path
+app.get('/', (req, res) => {
+  res.send('Hi, I am live.');
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
