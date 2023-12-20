@@ -1,0 +1,123 @@
+<div class="container h-100">
+  <div class="row justify-content-center vh-100">
+    <div class="col-lg-5 col-md-12 my-4 ">
+      <img src="../../../assets/image/bot.jpg" width="110" alt="">
+      <div class="mt-4">
+        <p>Hello! I'm MHB Advisor, a virtual assistant here on behalf of Michael the Home Buyer. We take pride in being
+          Canada's most trusted home buyer. Your details have been sent to our expert team, and we'll be reaching out to
+          you within the next hour. Our goal is to discuss everything thoroughly and provide you with a fair cash offer.
+        </p>
+
+        <p>If you have any questions in the meantime or if you're considering selling your house, I'm here to assist and
+          offer guidance. Feel free to start a chat—I'm here to help!</p>
+      </div>
+      <div class="mb-4">
+        <a href="https://michaelthehomebuyer.ca/" target="_blank" class="btn btn-outline-secondary me-2">Visit our
+          website</a>
+        <a href="https://michaelthehomebuyer.ca/contact" target="_blank" class="btn btn-outline-secondary me-2">Contact
+          us</a>
+        <a href="https://michaelthehomebuyer.ca/questions-about-selling-your-home" target="_blank"
+          class="btn btn-outline-secondary  mt-lg-0 mt-md-0 mt-2">Frequently Asked Questions</a>
+
+      </div>
+      <div>
+        <img src="https://www.nyrentownsell.com/blog/wp-content/uploads/2021/01/Moving_Day-1200-1024x536.jpg"
+          width="100%" alt="">
+      </div>
+    </div>
+    <div class="col-xl-7 col-md-12  chat">
+      <div class="card">
+        <div class="card-header msg_head">
+          <div class="d-flex bd-highlight">
+            <div class="img_cont">
+              <img src="../../../assets/image/bot.jpg"
+                class="rounded-circle user_img">
+              <span class="online_icon"></span>
+            </div>
+            <div class="user_info">
+              <span>Chat with MHB Advisor</span>
+              <p>Online</p>
+            </div>
+
+          </div>
+
+          <span id="action_menu_btn">
+            <i class="ti ti-refresh fs-3" (click)="refresh()"></i>
+          </span>
+        </div>
+
+        <div class="card-body msg_card_body" #scrollContainer>
+          <ul class="messages">
+
+
+            <div class="d-flex justify-content-end mb-4">
+              <div class="msg_cotainer_send" id="bot-msg">
+                Hi, how can i help you?
+              </div>
+              <div class="img_cont_msg">
+                <img src="../../../assets/image/bot.jpg"
+                  class="rounded-circle user_img_msg">
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-end mb-3">
+              <div class="col-lg-10 col-md-10 col-11 text-end">
+                <button type="button" class="btn btn-outline-secondary" (click)="preQues1()">Who is Michael the Home Buyer?</button>
+                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues2()">What is the process to sell house?</button>
+                
+                <button type="button" class="btn btn-outline-secondary" (click)="preQues3()">How long is the process to sell?</button>
+                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues4()">Do you buy condominiums?</button>
+             
+              </div>
+            </div>
+
+            <li *ngFor="let message of chatMessages" [class]="message.role + ' message'">
+              <div *ngIf="message.role == 'user'; else elseBlock">
+                <div class="d-flex justify-content-send mb-4">
+                  <!-- <div class="img_cont_msg">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Eo_circle_red_letter-y.svg/512px-Eo_circle_red_letter-y.svg.png"
+                      class="rounded-circle user_img_msg">
+                  </div> -->
+                  <div class="msg_cotainer">
+                    {{ message.content }}
+                  </div>
+                </div>
+              </div>
+
+              <ng-template #elseBlock>
+                <div class="d-flex justify-content-end mb-4">
+                  <div class="msg_cotainer_send" id="bot-msg">
+                    {{ message.content }}
+                  </div>
+                  <div class="img_cont_msg">
+                    <img src="../../../assets/image/bot.jpg"
+                      class="rounded-circle user_img_msg">
+                  </div>
+
+
+                </div>
+              </ng-template>
+
+
+
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div class="input-group">
+
+            <textarea name="" class="form-control type_msg" placeholder="Type your message..." [(ngModel)]="userMessage"
+              (keyup.enter)="sendMessage()"></textarea>
+
+            <button class="btn btn-danger" (click)="sendMessage()" [disabled]="!userMessage">Send</button>
+
+            <!-- <div class="input-group-append">
+            	<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

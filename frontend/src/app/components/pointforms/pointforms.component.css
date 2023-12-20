@@ -1,0 +1,21 @@
+.msg_cotainer{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    background-color: #f1f2f1;
+    /* color: white; */
+    padding: 15px;
+    position: relative;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.left-area{
+    background-color: #e23e3e;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
