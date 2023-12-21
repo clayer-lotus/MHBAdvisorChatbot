@@ -501,6 +501,19 @@
               </div>
             </div>
 
+            <div *ngIf="pleaseWait == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img
+                    src="../../../assets/image/bot.jpg"
+                    class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  Please wait, we are processing your information..
+                </div>
+              </div>
+            </div>
+
             <div *ngIf="step7 == true">
               <div class="d-flex justify-content-start mb-4">
                 <div class="img_cont_msg">

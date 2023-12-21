@@ -160,6 +160,7 @@ export class BotComponent {
   step9: boolean = false;
   step10: boolean = false;
   isTextareaDisabled: boolean = true;
+  pleaseWait: boolean = false;
 
   options: any = {
     componentRestrictions: {
@@ -337,7 +338,7 @@ export class BotComponent {
 
   propertyInformaionConf() {
 
-    
+    this.pleaseWait = true;
     setTimeout(() => {
       const container = this.scrollContainer.nativeElement;
       container.scrollTo({
