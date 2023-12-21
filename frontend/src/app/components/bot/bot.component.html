@@ -646,19 +646,22 @@
             </li>
           </ul>
         </div>
-        <div class="card-footer">
-          <div class="input-group">
-
-            <textarea name="" class="form-control type_msg" placeholder="Type your message..." [(ngModel)]="userMessage"
-              (keyup.enter)="sendMessage()" [disabled]="isTextareaDisabled"></textarea>
-
-            <button class="btn btn-danger" (click)="sendMessage()" [disabled]="!userMessage">Ask</button>
-
-            <!-- <div class="input-group-append">
-                  <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-              </div> -->
+        <div *ngIf="isTextareaDisabled == false">
+          <div class="card-footer">
+            <div class="input-group">
+  
+              <textarea name="" class="form-control type_msg" placeholder="Type your message..." [(ngModel)]="userMessage"
+                (keyup.enter)="sendMessage()" [disabled]="isTextareaDisabled"></textarea>
+  
+              <button class="btn btn-danger" (click)="sendMessage()" [disabled]="!userMessage">Ask</button>
+  
+              <!-- <div class="input-group-append">
+                    <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                </div> -->
+            </div>
           </div>
         </div>
+       
       </div>
     </div>
   </div>
