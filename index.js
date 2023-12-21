@@ -70,12 +70,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const fs = require('fs');
-const cors = require('cors'); // Add this line
+const cors = require('cors');
+const dotenv = require('dotenv'); // Add this line
+
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 const port = 3000;
 
-app.use(cors()); // Enable CORS for all routes
+app.use(cors());
 app.use(bodyParser.json());
 
 // Route to handle incoming messages and interact with GPT-3.5-turbo
@@ -95,7 +98,7 @@ app.post('/chat', async (req, res) => {
     const response = await axios.post('https://api.openai.com/v1/chat/completions', params, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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',
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`, // Use environment variable
       },
     });
 
@@ -106,7 +109,7 @@ app.post('/chat', async (req, res) => {
   }
 });
 
-// Route for root path
+// Route for the root path
 app.get('/', (req, res) => {
   res.send('Hi, I am live.');
 });

@@ -326,9 +326,21 @@
 
             <div *ngIf="step8 == true">
 
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <p>I appreciate your response. If there's anything else I can help you with or if you have any other questions, please don't hesitate to ask.</p>
+                  <button type="button" class="btn btn-outline-secondary" (click)="preQues1()">Who is Michael the Home Buyer?</button>
+                  <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues2()">How long is the process to sell?</button>
+                  <button type="button" class="btn btn-outline-secondary" (click)="preQues2()">What is the contact information of MHB?</button>       
+             
+                </div>
+              </div>
+
             <div class="row d-flex justify-content-end mb-3">
               <div class="col-lg-10 col-md-10 col-11 text-end">
-                <button type="button" class="btn btn-outline-secondary" (click)="preQues1()">Who is Michael the Home Buyer?</button>
                 <!-- <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues2()">What is the process to sell house?</button>              
                 <button type="button" class="btn btn-outline-secondary" (click)="preQues3()">How long is the process to sell?</button>
                 <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues4()">Do you buy condominiums?</button>              -->
@@ -372,9 +384,9 @@
 
             <button class="btn btn-danger" (click)="sendMessage()" [disabled]="!userMessage">Send</button>
 
-            <div class="input-group-append">
+            <!-- <div class="input-group-append">
                   <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-              </div>
+              </div> -->
           </div>
         </div>
       </div>
