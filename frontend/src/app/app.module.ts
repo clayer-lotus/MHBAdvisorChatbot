@@ -15,6 +15,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { SimpleModalModule, defaultSimpleModalOptions } from "ngx-simple-modal";
 import { AlertComponent } from './components/alert/alert.component';
 import { CustomErrorComponent } from './components/custom-error/custom-error.component';
+import { BotComponent } from './components/bot/bot.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CustomErrorComponent } from './components/custom-error/custom-error.com
     ChatComponent,
     PointformsComponent,
     AlertComponent,
-    CustomErrorComponent
+    CustomErrorComponent,
+    BotComponent
   ],
   imports: [
     BrowserModule,

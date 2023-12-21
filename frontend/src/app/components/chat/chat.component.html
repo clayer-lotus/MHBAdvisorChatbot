@@ -1,6 +1,6 @@
 <div class="container h-100">
   <div class="row justify-content-center vh-100">
-    <div class="col-lg-5 col-md-12 my-4 ">
+    <!-- <div class="col-lg-5 col-md-12 my-4 ">
       <img src="../../../assets/image/bot.jpg" width="110" alt="">
       <div class="mt-4">
         <p>Hello! I'm MHB Advisor, a virtual assistant here on behalf of Michael the Home Buyer. We take pride in being
@@ -24,8 +24,8 @@
         <img src="https://www.nyrentownsell.com/blog/wp-content/uploads/2021/01/Moving_Day-1200-1024x536.jpg"
           width="100%" alt="">
       </div>
-    </div>
-    <div class="col-xl-7 col-md-12  chat">
+    </div> -->
+    <div class="col-xl-12 col-md-12  chat">
       <div class="card">
         <div class="card-header msg_head">
           <div class="d-flex bd-highlight">
@@ -50,16 +50,18 @@
           <ul class="messages">
 
 
-            <div class="d-flex justify-content-end mb-4">
-              <div class="msg_cotainer_send" id="bot-msg">
-                Hi, how can i help you?
-              </div>
+            <div class="d-flex justify-content-start mb-4">
               <div class="img_cont_msg">
                 <img src="../../../assets/image/bot.jpg"
                   class="rounded-circle user_img_msg">
               </div>
-            </div>
-
+              <div class="msg_cotainer_send" id="bot-msg">
+                Hi, I',m MHB Advisor. Let's get you a quote! You know my name, what's yours?
+              </div>
+           
+              </div>
+             
+<!-- 
             <div class="row d-flex justify-content-end mb-3">
               <div class="col-lg-10 col-md-10 col-11 text-end">
                 <button type="button" class="btn btn-outline-secondary" (click)="preQues1()">Who is Michael the Home Buyer?</button>
@@ -69,11 +71,11 @@
                 <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues4()">Do you buy condominiums?</button>
              
               </div>
-            </div>
+            </div> -->
 
             <li *ngFor="let message of chatMessages" [class]="message.role + ' message'">
               <div *ngIf="message.role == 'user'; else elseBlock">
-                <div class="d-flex justify-content-send mb-4">
+                <div class="d-flex justify-content-end mb-4">
                   <!-- <div class="img_cont_msg">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Eo_circle_red_letter-y.svg/512px-Eo_circle_red_letter-y.svg.png"
@@ -86,16 +88,15 @@
               </div>
 
               <ng-template #elseBlock>
-                <div class="d-flex justify-content-end mb-4">
-                  <div class="msg_cotainer_send" id="bot-msg">
-                    {{ message.content }}
-                  </div>
+                <div class="d-flex justify-content-start mb-4">
                   <div class="img_cont_msg">
                     <img src="../../../assets/image/bot.jpg"
                       class="rounded-circle user_img_msg">
                   </div>
-
-
+                  <div class="msg_cotainer_send" id="bot-msg">
+                    {{ message.content }}
+                  </div>
+                
                 </div>
               </ng-template>
 

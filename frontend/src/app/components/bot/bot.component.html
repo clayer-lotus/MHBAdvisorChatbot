@@ -1,0 +1,385 @@
+<div class="container-fluid h-100">
+  <div class="row justify-content-center vh-100">
+    <div class="col-lg-2 col-md-12 left-area">
+      <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" width="110" alt="">
+      <div class="mt-4">
+        <p>Hello! I'm MHB Advisor, a virtual assistant here on behalf of Michael the Home Buyer. We take pride in being
+          Canada's most trusted home buyer. Your details have been sent to our expert team, and we'll be reaching out to
+          you within the next hour. Our goal is to discuss everything thoroughly and provide you with a fair cash offer.
+        </p>
+
+        <p>If you have any questions in the meantime or if you're considering selling your house, I'm here to assist and
+          offer guidance. Feel free to start a chat—I'm here to help!</p>
+      </div>
+      <div class="mb-4">
+        <a href="https://michaelthehomebuyer.ca/" target="_blank" class="btn btn-outline-secondary ">Visit our
+          website</a>
+        <a href="https://michaelthehomebuyer.ca/contact" target="_blank" class="btn btn-outline-secondary mx-2">Contact
+          us</a>
+        <a href="https://michaelthehomebuyer.ca/questions-about-selling-your-home" target="_blank"
+          class="btn btn-outline-secondary  mt-lg-0 mt-md-0 mt-2">FAQs</a>
+
+      </div>
+
+    </div>
+    <div class="col-lg-10 col-md-12  chat">
+      <div class="card">
+
+
+        <div class="card-body msg_card_body" #scrollContainer>
+          <ul class="messages">
+
+
+            <div class="d-flex justify-content-start mb-4">
+              <div class="img_cont_msg">
+                <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+              </div>
+              <div class="msg_cotainer_send" id="bot-msg">
+                Hi, I',m MHB Advisor. Let's get you a quote! You know my name, what's yours?
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end mb-4">
+              <div class="msg_cotainer">
+                Hi, MHB Advisor, nice to meet you, I'm
+                <div>
+                  <div class="form-floating my-4">
+                    <input type="text" class="form-control" id="floatingInput" [(ngModel)]="formData.firstName"
+                      placeholder="First Name" name="firstName" #firstNameRef="ngModel" ngModel required=""
+                      (keyup.enter)="formData.firstName && handleEnterKey1()">
+                    <label for="floatingInput">Your Full Name</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="step1 == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <p>Do you want to sell your home?</p>
+                  <button class="btn btn-success me-2" (click)="sellHomeCondTrue()">Yes</button>
+                  <button class="btn btn-secondary" (click)="sellHomeCondFalse()">No</button>
+                </div>
+              </div>
+
+            </div>
+
+            <div *ngIf="step3 == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <p>Ok cool, My goal is to get some information to pass along to our acquisition specialists. Please
+                    provide me your following personal information. </p>
+                </div>
+              </div>
+
+
+              <div class="d-flex justify-content-end mb-4">
+                <div class="msg_cotainer">
+                  <form #contactForm="ngForm" (ngSubmit)="contactFormData(contactForm)" class="needs-validation"
+                    novalidate="">
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-12">
+                        <p>Add Property Address</p>
+                        <div class="row mt-4">
+                          <div class="col-lg-12">
+                            <div class="form-floating mb-4">
+                              <input type="text" class="form-control" ngx-google-places-autocomplete [options]="options"
+                                (onAddressChange)="handleAddressChange($event)" id="floatingInput"
+                                [(ngModel)]="formData.sessionFullStreetAddress" placeholder="Property address"
+                                name="streetAddress" #streetAddressRef="ngModel" ngModel required="">
+                              <label for="floatingInput">Your Property address*</label>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-12 ">
+                        <p>Add Contact Info</p>
+                        <div class="row mt-4">
+
+                          <div class="col-lg-12">
+                            <div class="form-floating mb-4">
+                              <input type="tel" class="form-control" id="floatingInput"
+                                [(ngModel)]="formData.phoneNumber" placeholder="Phone Number"
+                                [inputMask]="phoneNumberInputMask" name="phoneNumber" #phoneNumberRef="ngModel" ngModel
+                                required="">
+                              <label for="floatingInput">Your Phone number*</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <div class="form-floating mb-4">
+                              <input type="email" class="form-control" id="floatingInput" [(ngModel)]="formData.email"
+                                placeholder="Email" name="email" #emailRef="ngModel" ngModel required="">
+                              <label for="floatingInput">Your Email*</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-4">
+                      <!-- <button class="btn btn-danger" id="button-vary1" type="submit" 
+                            [disabled]="!contactForm.form.valid">Get a cash offer</button> -->
+                      <button type="submit" class="btn btn-danger" id="button-vary1"
+                        [disabled]="!contactForm.form.valid">Submit</button>
+                    </div>
+
+
+                  </form>
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div *ngIf="step4 == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <p>Please confirm your provided perosnal information</p>
+                  <ul class="mb-3">
+                    <li>Property Address: <i>{{this.formData.sessionFullStreetAddress}}</i> </li>
+                    <li>Contact Number: <i>{{this.formData.phoneNumber}}</i></li>
+                    <li>Email: <i>{{this.formData.email}}</i></li>
+                  </ul>
+                  <button class="btn btn-success me-2" (click)="personalInformationConf()">Yes</button>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="step5 == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <p>Thanks, for providing your personal information. We just need few more information about your
+                    property. Please provide us with the below following information.</p>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end mb-4">
+                <div class="msg_cotainer">
+
+                  <form #propertyInformaion="ngForm" (ngSubmit)="propertyInformaionForm(propertyInformaion)"
+                    class="needs-validation" novalidate="">
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-12">
+                        <p>Add Property Information</p>
+                        <div class="row mt-4">
+                          <div class="col-lg-6">
+                            <div class="form-floating mb-4">
+                              <input type="number" min="0" max="100" class="form-control" id="floatingInput"
+                                [(ngModel)]="formData2.ownedProperty" name="ownedProperty" #ownedPropertyRef="ngModel"
+                                ngModel required="">
+                              <label for="floatingInput"> How long have you owned the property? (in yrs)*</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-12">
+                            <div class="form-floating mb-4">
+                              <select class="form-select " name="serviceReq" id="floatingSelect"
+                                aria-label="Floating label select example" required=""
+                                (change)="selectChangeHandler1($event)">
+                                <option *ngFor="let opt of this.propertyType" [value]="opt.label"
+                                  [selected]="opt.status == true">
+                                  {{opt.label}}</option>
+                              </select>
+                              <label for="floatingSelect">Type of property</label>
+                            </div>
+
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="form-floating mb-4">
+                              <input type="number" min="0" max="100000" class="form-control" id="floatingInput"
+                                [(ngModel)]="formData2.sizeProperty" name="sizeProperty" #sizeProperty="ngModel" ngModel
+                                required="">
+                              <label for="floatingInput">Size of the property (sq ft)*</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="form-floating mb-4">
+                              <input type="number" min="0" max="100" class="form-control" id="floatingInput"
+                                [(ngModel)]="formData2.numberOfBedroom" name="numberOfBedroom"
+                                #numberOfBedroomRef="ngModel" ngModel required="">
+                              <label for="floatingInput">Number of bedrooms*</label>
+                            </div>
+                          </div>
+                          <div class="col-lg-4">
+                            <div class="form-floating mb-4">
+                              <input type="number" min="0" max="100" class="form-control" id="floatingInput"
+                                [(ngModel)]="formData2.numberOfBathroom" name="numberOfBathroom"
+                                #numberOfBathroomRef="ngModel" ngModel required="">
+                              <label for="floatingInput">Number of bathroom*</label>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="form-floating mb-4">
+                              <input type="number" min="0" max="10000000" class="form-control" id="floatingInput"
+                                [(ngModel)]="formData2.desiredSellingPrice" name="desiredSellingPrice"
+                                #desiredSellingPriceRef="ngModel" ngModel required="">
+                              <label for="floatingInput">What is your desired selling price? (C$)*</label>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+
+                            <div class="form-floating mb-4">
+                              <select class="form-select " name="serviceReq" id="floatingSelect"
+                                aria-label="Floating label select example" required=""
+                                (change)="selectChangeHandler2($event)">
+                                <option *ngFor="let opt of this.sellingTimeline" [value]="opt.label"
+                                  [selected]="opt.status == true">
+                                  {{opt.label}}</option>
+                              </select>
+                              <label for="floatingSelect">What is your preferred timeline for selling?</label>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12">
+                            <div class="form-floating mb-4">
+                              <textarea class="form-control" [(ngModel)]="formData2.currentCondition"
+                                name="currentCondition" #currentConditionRef="ngModel" ngModel required=""
+                                style="height: 100px"></textarea>
+                              <label for="floatingTextarea">Describe the current condition
+                                of your property*</label>
+
+                            </div>
+
+                          </div>
+
+                          <div class="col-lg-12">
+                            <div class="form-floating mb-4">
+                              <textarea class="form-control" [(ngModel)]="formData2.motiveSellProperty"
+                                name="motiveSellProperty" #motiveSellPropertyRef="ngModel" ngModel required=""
+                                style="height: 100px"></textarea>
+                              <label for="floatingTextarea">What is motivating you to sell
+                                your property?*</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-4">
+
+                      <!-- <button class="btn btn-danger" id="button-vary1" type="submit" 
+                            [disabled]="!contactForm.form.valid">Get a cash offer</button> -->
+                      <!-- <button type="button" class="btn btn-secondary me-3" id="button-vary1" (click)="goBack()">Back</button> -->
+                      <button type="submit" class="btn btn-danger" id="button-vary1"
+                        [disabled]="!propertyInformaion.form.valid">Submit</button>
+                    </div>
+
+
+                  </form>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div *ngIf="step6 == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <p>Please confirm your provided property information</p>
+                  <ul class="mb-3">
+                    <p>How long have you owned the property? : <i>{{formData2.ownedProperty}}</i></p>
+                    <p>Type of property : <i>{{this.selectedPropertyType}}</i></p>
+                    <p>Size of the property (sq ft) : <i>{{formData2.sizeProperty}}</i></p>
+                    <p>Number of bedrooms : <i>{{formData2.numberOfBedroom}} </i></p>
+                    <p>Number of bathroom : <i>{{formData2.numberOfBathroom}}</i></p>
+                    <p>What is your desired selling price? : <i>{{formData2.desiredSellingPrice}}</i></p>
+                    <p>What is your preferred timeline for selling? : <i>{{this.selectedSellingTimeline}}</i></p>
+                    <p>Describe the current condition
+                      of your property : <i> {{formData2.currentCondition}}</i></p>
+                    <p>What is motivating you to sell
+                      your property? : <i>{{formData2.motiveSellProperty}}</i></p>
+                  </ul>
+                  <button class="btn btn-success me-2" (click)="propertyInformaionConf()">Yes</button>
+                </div>
+              </div>
+            </div>
+            
+            <div *ngIf="step7 == true">
+                <div class="d-flex justify-content-start mb-4">
+                    <div class="img_cont_msg">
+                      <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                    </div>
+                    <div class="msg_cotainer_send" id="bot-msg">
+                      <p>Okay thank you {{formData.firstName}}. And thank you for reaching out to us today. I have jotted down your information, I'll pass it along to an acquisition specialist. They will do an assessment and then get back to you within a few hours.</p>
+                    </div>
+                  </div>
+            </div>
+
+            <div *ngIf="step8 == false">
+
+            <div class="row d-flex justify-content-end mb-3">
+              <div class="col-lg-10 col-md-10 col-11 text-end">
+                <button type="button" class="btn btn-outline-secondary" (click)="preQues1()">Who is Michael the Home Buyer?</button>
+                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues2()">What is the process to sell house?</button>
+                
+                <button type="button" class="btn btn-outline-secondary" (click)="preQues3()">How long is the process to sell?</button>
+                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues4()">Do you buy condominiums?</button>
+             
+              </div>
+            </div>
+            </div>
+
+
+            <!-- <li *ngFor="let message of chatMessages" [class]="message.role + ' message'">
+              <div *ngIf="message.role == 'user'; else elseBlock">
+                <div class="d-flex justify-content-end mb-4">
+              
+                  <div class="msg_cotainer">
+                    {{ message.content }}
+                  </div>
+                </div>
+              </div>
+
+              <ng-template #elseBlock>
+                <div class="d-flex justify-content-start mb-4">
+                  <div class="img_cont_msg">
+                    <img src="https://static.vecteezy.com/system/resources/previews/019/786/706/original/chatbot-icon-cute-smiling-robot-cartoon-character-illustration-png.png" class="rounded-circle user_img_msg">
+                  </div>
+                  <div class="msg_cotainer_send" id="bot-msg">
+                    {{ message.content }}
+                  </div>
+
+                </div>
+              </ng-template>
+
+
+
+            </li> -->
+          </ul>
+        </div>
+        <div class="card-footer">
+          <div class="input-group">
+
+            <textarea name="" class="form-control type_msg" placeholder="Type your message..." [(ngModel)]="userMessage"
+              (keyup.enter)="sendMessage()"></textarea>
+
+            <button class="btn btn-danger" (click)="sendMessage()" [disabled]="!userMessage">Send</button>
+
+            <!-- <div class="input-group-append">
+                  <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+              </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

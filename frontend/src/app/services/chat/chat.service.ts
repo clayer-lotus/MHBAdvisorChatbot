@@ -35,7 +35,7 @@ export class ChatService {
 
 
   getResponseFromChatbot(text: string): Observable<any> {
-    return this.http.post<any>(this.rootURL3 + "text-query", {
+    return this.http.post<any>(this.dialogflowAPI + "text-query", {
       text: text
     }).pipe(catchError(this.errorHandler));
   }
