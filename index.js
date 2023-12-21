@@ -66,15 +66,16 @@
 //   console.log(`Server is running at http://localhost:${port}`);
 // });
 
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const fs = require('fs');
+const cors = require('cors'); // Import the cors middleware
 
 const app = express();
 const port = 3000;
 
+app.use(cors()); // Use the cors middleware
 app.use(bodyParser.json());
 
 // Route to handle incoming messages and interact with GPT-3.5-turbo
@@ -98,13 +99,10 @@ app.post('/chat', async (req, res) => {
       },
     });
 
-    // res.json(response.data.choices[0].message);
-    
     res.json({ response: response.data.choices[0].message, "status": "success" });
   } catch (error) {
     console.error('Error processing the request:', error);
     res.status(500).json({ "status": "timeout" , "message": "Internal server error. Please try again later."});
-    
   }
 });
 

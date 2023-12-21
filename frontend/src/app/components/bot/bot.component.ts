@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { createMask } from '@ngneat/input-mask';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { ChatService } from 'src/app/services/chat/chat.service';
 
 @Component({
   selector: 'app-bot',
@@ -155,6 +156,8 @@ export class BotComponent {
       country: 'CA'
     }
   }
+  constructor(private _apiCallServices : ChatService){}
+
   handleAddressChange(address: Address) {
     this.formData.sessionFullStreetAddress = address.formatted_address;
 
@@ -179,7 +182,7 @@ export class BotComponent {
   }
 
   sellHomeCondFalse() {
-
+    this.step8 = true;
   }
 
   contactFormData(form: NgForm) {
@@ -250,14 +253,129 @@ export class BotComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
-this.step7 = true;
+    this.step7 = true;
   }
 
+  sendMessage() {
+    const userMessage = this.userMessage;
+    this.userMessage = "";
+    setTimeout(() => {
+      const container = this.scrollContainer.nativeElement;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth' // Use smooth behavior for smooth scrolling
+      });
+    }, 100); // Adjust the delay as needed
+
+    this.chatMessages.push({ role: 'user', content: userMessage });
+    // this.chatMessages.push({ role: 'bot', content: `Discover the Magic of ChatGPT's Typewriter Reply Animation. Achieve the magical typewriter animation effect like ChatGPT with SSE in JavaScript.` });
+    // Clear the input field after sending the message
+   
+    
+    this._apiCallServices.getResponseFromChatbot(userMessage).subscribe(res => {
+      console.log(res);
+      if (res.status == "success") {
+          // setTimeout(() => {
+          //     this.spinner.hide();
+          // }, 1000);
+          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+          // setTimeout(function () {
+          //     window.location.href = '/thank-you'
+          // }, 1000);
+          this.chatMessages.push({ role: 'bot', content: res.response.content });
+          this.userMessage = '';
+          setTimeout(() => {
+            const container = this.scrollContainer.nativeElement;
+            container.scrollTo({
+              top: container.scrollHeight,
+              behavior: 'smooth' // Use smooth behavior for smooth scrolling
+            });
+          }, 100); // Adjust the delay as needed
+      
+      } 
+      // else if (res.status == "error") {
+      //   alert(res.message);
+      //   location.reload;
+      //     setTimeout(() => {
+      //         this.spinner.hide();
+      //         window.location.reload();
+      //     }, 1000);
+
+      // } 
+      else if (res.status == "timeout") {
+        // alert(res.message);
+        // location.reload;
+        //   setTimeout(() => {
+        //       this.spinner.hide();
+        //       window.location.reload();
+        //   }, 1000);
+        this.chatMessages.push({ role: 'bot', content: `Internal server error. Please try again later.` });
+        setTimeout(() => {
+          const container = this.scrollContainer.nativeElement;
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: 'smooth' // Use smooth behavior for smooth scrolling
+          });
+        }, 100); // Adjust the delay as needed
+    
+      }
+
+  });
+}
+
+  preQues1() {
+    const userMessage = "Who is Michael the Home Buyer?";
+    setTimeout(() => {
+      const container = this.scrollContainer.nativeElement;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth' // Use smooth behavior for smooth scrolling
+      });
+    }, 100); // Adjust the delay as needed
+
+    this.chatMessages.push({ role: 'user', content: userMessage });
+    // this.chatMessages.push({ role: 'bot', content: `Discover the Magic of ChatGPT's Typewriter Reply Animation. Achieve the magical typewriter animation effect like ChatGPT with SSE in JavaScript.` });
+    // Clear the input field after sending the message
+   
+    
+    this._apiCallServices.getResponseFromChatbot(userMessage).subscribe(res => {
+      console.log(res);
+      if (res.status == "success") {
+          // setTimeout(() => {
+          //     this.spinner.hide();
+          // }, 1000);
+          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+          // setTimeout(function () {
+          //     window.location.href = '/thank-you'
+          // }, 1000);
+          this.chatMessages.push({ role: 'bot', content: res.response.content });
+          this.userMessage = '';
+       
+      } 
+      // else if (res.status == "error") {
+      //   alert(res.message);
+      //   location.reload;
+      //     setTimeout(() => {
+      //         this.spinner.hide();
+      //         window.location.reload();
+      //     }, 1000);
+
+      // } 
+      else if (res.status == "timeout") {
+        // alert(res.message);
+        // location.reload;
+        //   setTimeout(() => {
+        //       this.spinner.hide();
+        //       window.location.reload();
+        //   }, 1000);
+        this.chatMessages.push({ role: 'bot', content: `Internal server error. Please try again later.` });
+   
+      }
+
+  });
+  }
 
   refresh() {
-
-  }
-  sendMessage() {
 
   }
 

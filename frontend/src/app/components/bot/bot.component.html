@@ -324,22 +324,20 @@
                   </div>
             </div>
 
-            <div *ngIf="step8 == false">
+            <div *ngIf="step8 == true">
 
             <div class="row d-flex justify-content-end mb-3">
               <div class="col-lg-10 col-md-10 col-11 text-end">
                 <button type="button" class="btn btn-outline-secondary" (click)="preQues1()">Who is Michael the Home Buyer?</button>
-                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues2()">What is the process to sell house?</button>
-                
+                <!-- <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues2()">What is the process to sell house?</button>              
                 <button type="button" class="btn btn-outline-secondary" (click)="preQues3()">How long is the process to sell?</button>
-                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues4()">Do you buy condominiums?</button>
-             
+                <button type="button" class="btn btn-outline-secondary m-2" (click)="preQues4()">Do you buy condominiums?</button>              -->
               </div>
             </div>
             </div>
 
 
-            <!-- <li *ngFor="let message of chatMessages" [class]="message.role + ' message'">
+            <li *ngFor="let message of chatMessages" [class]="message.role + ' message'">
               <div *ngIf="message.role == 'user'; else elseBlock">
                 <div class="d-flex justify-content-end mb-4">
               
@@ -363,7 +361,7 @@
 
 
 
-            </li> -->
+            </li>
           </ul>
         </div>
         <div class="card-footer">
@@ -374,9 +372,9 @@
 
             <button class="btn btn-danger" (click)="sendMessage()" [disabled]="!userMessage">Send</button>
 
-            <!-- <div class="input-group-append">
+            <div class="input-group-append">
                   <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-              </div> -->
+              </div>
           </div>
         </div>
       </div>
