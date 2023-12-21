@@ -238,51 +238,51 @@ export class PointformsComponent {
         this.spinner.show();
 
 
-          this._apiCallServices.mhbAdvisorAPI(this.formData.firstName, this.formData.lastName, this.formData.email, this.formData.phoneNumber,  this.formData.sessionFullStreetAddress, this.formData2.ownedProperty, this.formData2.sizeProperty, 
-            this.formData2.numberOfBedroom, this.formData2.numberOfBathroom, this.formData2.desiredSellingPrice, this.formData2.currentCondition, this.formData2.motiveSellProperty, this.selectedPropertyType, this.selectedSellingTimeline).subscribe(res => {
-                console.log(res);
-                if (res.status == "success") {
-                    setTimeout(() => {
-                        this.spinner.hide();
-                    }, 1000);
-                    // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
-                      this.SimpleModalService.addModal(AlertComponent, { message: 'Redirecting you to chat window..'});
+        //   this._apiCallServices.mhbAdvisorAPI(this.formData.firstName, this.formData.lastName, this.formData.email, this.formData.phoneNumber,  this.formData.sessionFullStreetAddress, this.formData2.ownedProperty, this.formData2.sizeProperty, 
+        //     this.formData2.numberOfBedroom, this.formData2.numberOfBathroom, this.formData2.desiredSellingPrice, this.formData2.currentCondition, this.formData2.motiveSellProperty, this.selectedPropertyType, this.selectedSellingTimeline).subscribe(res => {
+        //         console.log(res);
+        //         if (res.status == "success") {
+        //             setTimeout(() => {
+        //                 this.spinner.hide();
+        //             }, 1000);
+        //             // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+        //               this.SimpleModalService.addModal(AlertComponent, { message: 'Redirecting you to chat window..'});
     
-                    setTimeout(function () {
-                        window.location.href = '/chat'
-                    }, 12000);
-                } else if (res.status == "error") {
-                  alert(res.message);
-                  location.reload;
-                    setTimeout(() => {
-                        this.spinner.hide();
-                        window.location.reload();
-                    }, 1000);
+        //             setTimeout(function () {
+        //                 window.location.href = '/chat'
+        //             }, 12000);
+        //         } else if (res.status == "error") {
+        //           alert(res.message);
+        //           location.reload;
+        //             setTimeout(() => {
+        //                 this.spinner.hide();
+        //                 window.location.reload();
+        //             }, 1000);
     
-                } else if (res.status == "timeout") {
-                  alert(res.message);
-                  location.reload;
-                    setTimeout(() => {
-                        this.spinner.hide();
-                        window.location.reload();
-                    }, 1000);
+        //         } else if (res.status == "timeout") {
+        //           alert(res.message);
+        //           location.reload;
+        //             setTimeout(() => {
+        //                 this.spinner.hide();
+        //                 window.location.reload();
+        //             }, 1000);
     
-                }
+        //         }
     
     
-            }, err => {
-                this.SimpleModalService.addModal(CustomErrorComponent);
+        //     }, err => {
+        //         this.SimpleModalService.addModal(CustomErrorComponent);
   
-                alert('An error occurred. Please try after sometime!');
-                location.reload;
-                  setTimeout(() => {
-                      this.spinner.hide();
-                      window.location.reload();
-                  }, 1000);
+        //         alert('An error occurred. Please try after sometime!');
+        //         location.reload;
+        //           setTimeout(() => {
+        //               this.spinner.hide();
+        //               window.location.reload();
+        //           }, 1000);
               
     
     
-            }, () => console.log("CONTACT DETAILS FORM SUMBITTED SUCCESSFULLY"))
+        //     }, () => console.log("CONTACT DETAILS FORM SUMBITTED SUCCESSFULLY"))
     }
 
 }

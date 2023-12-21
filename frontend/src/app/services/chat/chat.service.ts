@@ -13,11 +13,10 @@ export class ChatService {
   rootURL3 = "https://red-violet-horse-cape.cyclic.app/";  
   dialogflowAPI = "https://weak-gold-wasp-hose.cyclic.app/";
 
-  mhbAdvisorAPI( firstName: string,  lastName: string, email: string, phoneNumber: string, streetAddress: string, ownedProperty: string, sizeProperty: string, numberOfBedroom: string, numberOfBathroom: string, desiredSellingPrice: string, 
+  mhbAdvisorAPI( fullName: string, email: string, phoneNumber: string, streetAddress: string, ownedProperty: string, sizeProperty: string, numberOfBedroom: string, numberOfBathroom: string, desiredSellingPrice: string, 
     currentCondition: string, motiveSellProperty: string, propertyType: string, sellingTimeline: string): Observable<any> {
     return this.http.post<any>(this.rootURL3 + "michael-the-home-buyer/mhb-advisor", {
-      firstName: firstName,
-      lastName: lastName,
+      fullName: fullName,
       email: email,
       phoneNumber: phoneNumber,
       streetAddress: streetAddress,

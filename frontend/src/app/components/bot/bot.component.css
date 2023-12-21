@@ -9,11 +9,14 @@ body,html{
     color: black !important;
 }
 
-.left-area{}
+.left-area{
+}
 
 .chat{
-    margin-top: auto;
-    margin-bottom: auto;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+   
+    background-color: black;
 }
 .card{
     /* max-height: 100vh; */
@@ -29,7 +32,8 @@ body,html{
 }
 .msg_card_body{
     overflow-y: auto;
-    background-color: white;
+   
+    background-color: rgba(0, 0, 0, 0.785) !important;
 }
 .msg_card_body ul{
     list-style-type: none;

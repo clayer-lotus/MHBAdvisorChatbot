@@ -5,7 +5,7 @@ import { PointformsComponent } from './components/pointforms/pointforms.componen
 import { BotComponent } from './components/bot/bot.component';
 
 const routes: Routes = [
-  { path: '', component: PointformsComponent, pathMatch: 'full'},
+  { path: '', component: BotComponent, pathMatch: 'full'},
   { path: 'chat', component: ChatComponent, pathMatch: 'full'},
   { path: 'bot', component: BotComponent, pathMatch: 'full'},
 ];
