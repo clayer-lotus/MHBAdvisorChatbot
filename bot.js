@@ -25,7 +25,7 @@ app.post('/chat', async (req, res) => {
     const response = await axios.post('https://api.openai.com/v1/chat/completions', params, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer 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',
       },
     });
 
