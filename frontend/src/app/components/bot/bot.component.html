@@ -45,14 +45,43 @@
             <div class="d-flex justify-content-end mb-4">
               <div class="msg_cotainer">
               <p>  Hi, MHB Advisor, nice to meet you, I'm</p>
-                <div>
+
+              <form #fullnameForm="ngForm" (ngSubmit)="fullnameFormData(fullnameForm)" class="needs-validation"
+              novalidate="">
+              <div class="row">
+        
+                <div class="col-lg-12 col-md-12 col-12 ">
+                  <div class="row">
+
+                    <div class="col-lg-12">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput" [(ngModel)]="formData.fullName"
+                          placeholder="Full Name" name="fullName" #fullNameRef="ngModel" ngModel required="">
+                        <label for="floatingInput">Enter your full name</label>
+                      </div>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <!-- <button class="btn btn-danger" id="button-vary1" type="submit" 
+                      [disabled]="!contactForm.form.valid">Get a cash offer</button> -->
+                <button type="submit" class="btn btn-danger" id="button-vary1"
+                  [disabled]="!fullnameForm.form.valid"><i class="ti ti-circle-check-filled"></i> Submit</button>
+              </div>
+
+
+            </form>
+                <!-- <div>
                   <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInput" [(ngModel)]="formData.fullName"
                       placeholder="Full Name" name="fullName" #fullNameRef="ngModel" ngModel required=""
                       (keyup.enter)="formData.fullName && handleEnterKey1()">
                     <label for="floatingInput">Enter your full name</label>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 

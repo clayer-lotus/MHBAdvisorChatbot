@@ -187,6 +187,14 @@ export class BotComponent {
     this.step1 = true;
     
   }
+
+  fullnameFormData(form: NgForm){
+    
+    this.playFile();
+    this.step1 = true;
+    
+  }
+
   sellHomeCondTrue() {
     
     this.step3 = true;
