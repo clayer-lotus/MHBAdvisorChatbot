@@ -85,6 +85,24 @@
               </div>
             </div>
 
+            <!-- <div *ngIf="loadingSpinner == true">
+              <div class="d-flex justify-content-start mb-4">
+                <div class="img_cont_msg">
+                  <img
+                    src="../../../assets/image/bot.jpg"
+                    class="rounded-circle user_img_msg">
+                </div>
+                <div class="msg_cotainer_send" id="bot-msg">
+                  <div class="loader"> 
+                    <span></span> 
+                    <span ></span> 
+                    <span ></span>
+                  </div> 
+                </div>
+              </div>
+
+            </div> -->
+
             <div *ngIf="step1 == true">
               <div class="d-flex justify-content-start mb-4">
                 <div class="img_cont_msg">
@@ -94,7 +112,7 @@
                 </div>
                 <div class="msg_cotainer_send" id="bot-msg">
                   <p>Hi, {{formData.fullName}}. Do you want to sell your home?</p>
-                  <button class="btn btn-success me-2" (click)="sellHomeCondTrue()">Yes, i want</button>
+                  <button class="btn btn-success me-2" (click)="sellHomeCondTrue()">Yes, i  want</button>
                   <button class="btn btn-secondary" (click)="sellHomeCondFalse()">No</button>
                 </div>
               </div>
@@ -657,6 +675,27 @@
               </div>
 
               <ng-template #elseBlock>
+
+                <div  *ngIf="message.content == '...'; else elseBlockBotLoading">
+                  <div class="d-flex justify-content-start mb-4">
+                    <div class="img_cont_msg">
+                      <img
+                        src="../../../assets/image/bot.jpg"
+                        class="rounded-circle user_img_msg">
+                    </div>
+                    <div class="msg_cotainer_send" id="bot-msg">
+                      <div class="loader"> 
+                        <span></span> 
+                        <span ></span> 
+                        <span ></span>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              
+              </ng-template>
+
+              <ng-template #elseBlockBotLoading>
                 <div class="d-flex justify-content-start mb-4">
                   <div class="img_cont_msg">
                     <img

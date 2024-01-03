@@ -161,13 +161,14 @@ export class BotComponent {
   step10: boolean = false;
   isTextareaDisabled: boolean = true;
   pleaseWait: boolean = false;
+  loadingSpinner: boolean = true;
 
   options: any = {
     componentRestrictions: {
       country: 'CA'
     }
   }
-  constructor(private _apiCallServices : ChatService){}
+  constructor(private _apiCallServices: ChatService) { }
 
   playFile() {
     this.audioFile.play();
@@ -182,21 +183,21 @@ export class BotComponent {
     // Perform action when Enter key is pressed and firstName is not empty
     // alert('Enter key pressed with a valid first name: ' + this.formData.firstName);
     // Your logic here
-    
+
     this.playFile();
     this.step1 = true;
-    
+
   }
 
-  fullnameFormData(form: NgForm){
-    
+  fullnameFormData(form: NgForm) {
+
     this.playFile();
     this.step1 = true;
-    
+
   }
 
   sellHomeCondTrue() {
-    
+
     this.step3 = true;
     setTimeout(() => {
       const container = this.scrollContainer.nativeElement;
@@ -210,7 +211,7 @@ export class BotComponent {
   }
 
   sellHomeCondFalse() {
-    
+
     this.playFile();
     this.step8 = true;
     this.isTextareaDisabled = false;
@@ -232,8 +233,8 @@ export class BotComponent {
       // console.log(form.value);
       // console.log(this.formData);
       // this.chatMessages.push({ role: 'bot', content: `Please provide your property information.` });
-      
-    this.playFile();
+
+      this.playFile();
       this.step4 = true;
     }
   }
@@ -244,12 +245,12 @@ export class BotComponent {
         top: container.scrollHeight,
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
-      
+
     }, 100); // Adjust the delay as needed
 
     this.playFile();
     this.step5 = true;
-   
+
   }
 
 
@@ -290,7 +291,7 @@ export class BotComponent {
   // sellingIntentions: boolean = false;
   // reasonForSelling: boolean = false;
 
-  propertyDetailsForm(form: NgForm){
+  propertyDetailsForm(form: NgForm) {
     setTimeout(() => {
       const container = this.scrollContainer.nativeElement;
       container.scrollTo({
@@ -298,13 +299,13 @@ export class BotComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
-    
+
     this.playFile();
     this.currentCondStep = true;
   }
 
 
-  currentCondStepForm(form: NgForm){
+  currentCondStepForm(form: NgForm) {
     setTimeout(() => {
       const container = this.scrollContainer.nativeElement;
       container.scrollTo({
@@ -312,13 +313,13 @@ export class BotComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
-    
+
     this.playFile();
     this.sellingIntentions = true;
   }
 
 
-  sellingIntentionsForm(form: NgForm){
+  sellingIntentionsForm(form: NgForm) {
     setTimeout(() => {
       const container = this.scrollContainer.nativeElement;
       container.scrollTo({
@@ -326,12 +327,12 @@ export class BotComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
-    
+
     this.playFile();
     this.reasonForSelling = true;
   }
 
-  reasonForSellingForm(form:NgForm){
+  reasonForSellingForm(form: NgForm) {
     setTimeout(() => {
       const container = this.scrollContainer.nativeElement;
       container.scrollTo({
@@ -339,7 +340,7 @@ export class BotComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
-    
+
     this.playFile();
     this.step6 = true;
   }
@@ -355,74 +356,39 @@ export class BotComponent {
       });
     }, 100); // Adjust the delay as needed
 
-    this._apiCallServices.mhbAdvisorAPI(this.formData.fullName, this.formData.email, this.formData.phoneNumber,  this.formData.sessionFullStreetAddress, this.formData2.ownedProperty, this.formData2.sizeProperty, 
+    this._apiCallServices.mhbAdvisorAPI(this.formData.fullName, this.formData.email, this.formData.phoneNumber, this.formData.sessionFullStreetAddress, this.formData2.ownedProperty, this.formData2.sizeProperty,
       this.formData2.numberOfBedroom, this.formData2.numberOfBathroom, this.formData2.desiredSellingPrice, this.formData2.currentCondition, this.formData2.motiveSellProperty, this.selectedPropertyType, this.selectedSellingTimeline).subscribe(res => {
-          console.log(res);
-          if (res.status == "success") {
-              // setTimeout(() => {
-              //     this.spinner.hide();
-              // }, 1000);
-              // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
-                // this.SimpleModalService.addModal(AlertComponent, { message: 'Redirecting you to chat window..'});
+        console.log(res);
+        if (res.status == "success") {
+          // setTimeout(() => {
+          //     this.spinner.hide();
+          // }, 1000);
+          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+          // this.SimpleModalService.addModal(AlertComponent, { message: 'Redirecting you to chat window..'});
 
-              // setTimeout(function () {
-              //     window.location.href = '/chat'
-              // }, 12000);
+          // setTimeout(function () {
+          //     window.location.href = '/chat'
+          // }, 12000);
 
-              this.playFile();
-              this.step7 = true;
-              setTimeout(() => {
-                const container = this.scrollContainer.nativeElement;
-                container.scrollTo({
-                  top: container.scrollHeight,
-                  behavior: 'smooth' // Use smooth behavior for smooth scrolling
-                });
-              }, 100); // Adjust the delay as needed
-          
-          } else if (res.status == "error") {
-            // alert(res.message);
-            // location.reload;
-            //   setTimeout(() => {
-            //       this.spinner.hide();
-            //       window.location.reload();
-            //   }, 1000);
+          this.playFile();
+          this.step7 = true;
+          setTimeout(() => {
+            const container = this.scrollContainer.nativeElement;
+            container.scrollTo({
+              top: container.scrollHeight,
+              behavior: 'smooth' // Use smooth behavior for smooth scrolling
+            });
+          }, 100); // Adjust the delay as needed
 
-            this.playFile();
-            this.errorFormSubmit = true;
-            setTimeout(() => {
-              const container = this.scrollContainer.nativeElement;
-              container.scrollTo({
-                top: container.scrollHeight,
-                behavior: 'smooth' // Use smooth behavior for smooth scrolling
-              });
-            }, 100); // Adjust the delay as needed
-        
-
-          } else if (res.status == "timeout") {
-            
-    this.playFile();
-            this.errorFormSubmit = true;
-            setTimeout(() => {
-              const container = this.scrollContainer.nativeElement;
-              container.scrollTo({
-                top: container.scrollHeight,
-                behavior: 'smooth' // Use smooth behavior for smooth scrolling
-              });
-            }, 100); // Adjust the delay as needed
-        
-
-          }
-
-
-      }, err => {
-          // this.SimpleModalService.addModal(CustomErrorComponent);
-
-          // alert('An error occurred. Please try after sometime!');
+        } else if (res.status == "error") {
+          // alert(res.message);
           // location.reload;
           //   setTimeout(() => {
           //       this.spinner.hide();
           //       window.location.reload();
           //   }, 1000);
+
+          this.playFile();
           this.errorFormSubmit = true;
           setTimeout(() => {
             const container = this.scrollContainer.nativeElement;
@@ -431,7 +397,42 @@ export class BotComponent {
               behavior: 'smooth' // Use smooth behavior for smooth scrolling
             });
           }, 100); // Adjust the delay as needed
-      
+
+
+        } else if (res.status == "timeout") {
+
+          this.playFile();
+          this.errorFormSubmit = true;
+          setTimeout(() => {
+            const container = this.scrollContainer.nativeElement;
+            container.scrollTo({
+              top: container.scrollHeight,
+              behavior: 'smooth' // Use smooth behavior for smooth scrolling
+            });
+          }, 100); // Adjust the delay as needed
+
+
+        }
+
+
+      }, err => {
+        // this.SimpleModalService.addModal(CustomErrorComponent);
+
+        // alert('An error occurred. Please try after sometime!');
+        // location.reload;
+        //   setTimeout(() => {
+        //       this.spinner.hide();
+        //       window.location.reload();
+        //   }, 1000);
+        this.errorFormSubmit = true;
+        setTimeout(() => {
+          const container = this.scrollContainer.nativeElement;
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: 'smooth' // Use smooth behavior for smooth scrolling
+          });
+        }, 100); // Adjust the delay as needed
+
 
       }, () => console.log("CONTACT DETAILS FORM SUMBITTED SUCCESSFULLY"))
 
@@ -454,32 +455,37 @@ export class BotComponent {
     this.chatMessages.push({ role: 'user', content: userMessage });
     // this.chatMessages.push({ role: 'bot', content: `Discover the Magic of ChatGPT's Typewriter Reply Animation. Achieve the magical typewriter animation effect like ChatGPT with SSE in JavaScript.` });
     // Clear the input field after sending the message
-   
-    
+
+    this.chatMessages.push({ role: 'bot', content: '...' });
+    this.isTextareaDisabled = true;
+  
     this._apiCallServices.getResponseFromChatbot(userMessage).subscribe(res => {
       console.log(res);
       if (res.status == "success") {
-          // setTimeout(() => {
-          //     this.spinner.hide();
-          // }, 1000);
-          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
-          // setTimeout(function () {
-          //     window.location.href = '/thank-you'
-          // }, 1000);
-          
-          this.chatMessages.push({ role: 'bot', content: res.response.content });
-          
-          this.playFile();
-          this.userMessage = '';
-          setTimeout(() => {
-            const container = this.scrollContainer.nativeElement;
-            container.scrollTo({
-              top: container.scrollHeight,
-              behavior: 'smooth' // Use smooth behavior for smooth scrolling
-            });
-          }, 100); // Adjust the delay as needed
-      
-      } 
+        // setTimeout(() => {
+        //     this.spinner.hide();
+        // }, 1000);
+        // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+        // setTimeout(function () {
+        //     window.location.href = '/thank-you'
+        // }, 1000);
+
+        this.chatMessages.pop();
+        
+        this.playFile();
+        this.chatMessages.push({ role: 'bot', content: res.response.content });
+        this.isTextareaDisabled = false;
+  
+        this.userMessage = '';
+        setTimeout(() => {
+          const container = this.scrollContainer.nativeElement;
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: 'smooth' // Use smooth behavior for smooth scrolling
+          });
+        }, 100); // Adjust the delay as needed
+
+      }
       // else if (res.status == "error") {
       //   alert(res.message);
       //   location.reload;
@@ -496,9 +502,12 @@ export class BotComponent {
         //       this.spinner.hide();
         //       window.location.reload();
         //   }, 1000);
-        
-    this.playFile();
+
+        this.chatMessages.pop();
+        this.playFile();
         this.chatMessages.push({ role: 'bot', content: `Internal server error. Please try again later.` });
+        this.isTextareaDisabled = false;
+  
         setTimeout(() => {
           const container = this.scrollContainer.nativeElement;
           container.scrollTo({
@@ -506,11 +515,11 @@ export class BotComponent {
             behavior: 'smooth' // Use smooth behavior for smooth scrolling
           });
         }, 100); // Adjust the delay as needed
-    
+
       }
 
-  });
-}
+    });
+  }
 
   preQues1() {
     const userMessage = "Who is Michael the Home Buyer?";
@@ -526,31 +535,35 @@ export class BotComponent {
     this.chatMessages.push({ role: 'user', content: userMessage });
     // this.chatMessages.push({ role: 'bot', content: `Discover the Magic of ChatGPT's Typewriter Reply Animation. Achieve the magical typewriter animation effect like ChatGPT with SSE in JavaScript.` });
     // Clear the input field after sending the message
-   
-    
+
+    this.chatMessages.push({ role: 'bot', content: '...' });
+    this.isTextareaDisabled = true;
+  
     this._apiCallServices.getResponseFromChatbot(userMessage).subscribe(res => {
       console.log(res);
       if (res.status == "success") {
-          // setTimeout(() => {
-          //     this.spinner.hide();
-          // }, 1000);
-          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
-          // setTimeout(function () {
-          //     window.location.href = '/thank-you'
-          // }, 1000);
-          
-    this.playFile();
-          this.chatMessages.push({ role: 'bot', content: res.response.content });
-          this.userMessage = '';
-          setTimeout(() => {
-            const container = this.scrollContainer.nativeElement;
-            container.scrollTo({
-              top: container.scrollHeight,
-              behavior: 'smooth' // Use smooth behavior for smooth scrolling
-            });
-          }, 100); // Adjust the delay as needed
-        
-      } 
+        // setTimeout(() => {
+        //     this.spinner.hide();
+        // }, 1000);
+        // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+        // setTimeout(function () {
+        //     window.location.href = '/thank-you'
+        // }, 1000);
+        this.chatMessages.pop();
+        this.playFile();
+        this.chatMessages.push({ role: 'bot', content: res.response.content });
+        this.userMessage = '';
+        this.isTextareaDisabled = false;
+  
+        setTimeout(() => {
+          const container = this.scrollContainer.nativeElement;
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: 'smooth' // Use smooth behavior for smooth scrolling
+          });
+        }, 100); // Adjust the delay as needed
+
+      }
       // else if (res.status == "error") {
       //   alert(res.message);
       //   location.reload;
@@ -567,9 +580,12 @@ export class BotComponent {
         //       this.spinner.hide();
         //       window.location.reload();
         //   }, 1000);
-        
-    this.playFile();
+
+        this.chatMessages.pop();
+        this.playFile();
         this.chatMessages.push({ role: 'bot', content: `Internal server error. Please try again later.` });
+        this.isTextareaDisabled = false;
+  
         setTimeout(() => {
           const container = this.scrollContainer.nativeElement;
           container.scrollTo({
@@ -577,21 +593,21 @@ export class BotComponent {
             behavior: 'smooth' // Use smooth behavior for smooth scrolling
           });
         }, 100); // Adjust the delay as needed
-      
+
       }
 
-  });
-  setTimeout(() => {
-    const container = this.scrollContainer.nativeElement;
-    container.scrollTo({
-      top: container.scrollHeight,
-      behavior: 'smooth' // Use smooth behavior for smooth scrolling
     });
-  }, 100); // Adjust the delay as needed
+    setTimeout(() => {
+      const container = this.scrollContainer.nativeElement;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth' // Use smooth behavior for smooth scrolling
+      });
+    }, 100); // Adjust the delay as needed
 
   }
 
-  
+
   preQues2() {
     const userMessage = "How long is the process to sell?";
     setTimeout(() => {
@@ -604,34 +620,39 @@ export class BotComponent {
 
     this.playFile();
     this.chatMessages.push({ role: 'user', content: userMessage });
-    
+
     // this.chatMessages.push({ role: 'bot', content: `Discover the Magic of ChatGPT's Typewriter Reply Animation. Achieve the magical typewriter animation effect like ChatGPT with SSE in JavaScript.` });
     // Clear the input field after sending the message
-   
-    
+
+    this.chatMessages.push({ role: 'bot', content: '...' });
+    this.isTextareaDisabled = true;
+  
     this._apiCallServices.getResponseFromChatbot(userMessage).subscribe(res => {
       console.log(res);
       if (res.status == "success") {
-          // setTimeout(() => {
-          //     this.spinner.hide();
-          // }, 1000);
-          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
-          // setTimeout(function () {
-          //     window.location.href = '/thank-you'
-          // }, 1000);
-          
-    this.playFile();
-          this.chatMessages.push({ role: 'bot', content: res.response.content });
-          this.userMessage = '';
-          setTimeout(() => {
-            const container = this.scrollContainer.nativeElement;
-            container.scrollTo({
-              top: container.scrollHeight,
-              behavior: 'smooth' // Use smooth behavior for smooth scrolling
-            });
-          }, 100); // Adjust the delay as needed
-        
-      } 
+        // setTimeout(() => {
+        //     this.spinner.hide();
+        // }, 1000);
+        // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+        // setTimeout(function () {
+        //     window.location.href = '/thank-you'
+        // }, 1000);
+
+        this.chatMessages.pop();
+        this.playFile();
+        this.chatMessages.push({ role: 'bot', content: res.response.content });
+        this.userMessage = '';
+        this.isTextareaDisabled = false;
+  
+        setTimeout(() => {
+          const container = this.scrollContainer.nativeElement;
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: 'smooth' // Use smooth behavior for smooth scrolling
+          });
+        }, 100); // Adjust the delay as needed
+
+      }
       // else if (res.status == "error") {
       //   alert(res.message);
       //   location.reload;
@@ -648,9 +669,12 @@ export class BotComponent {
         //       this.spinner.hide();
         //       window.location.reload();
         //   }, 1000);
-        
-    this.playFile();
+
+        this.chatMessages.pop();
+        this.playFile();
         this.chatMessages.push({ role: 'bot', content: `Internal server error. Please try again later.` });
+        this.isTextareaDisabled = false;
+  
         setTimeout(() => {
           const container = this.scrollContainer.nativeElement;
           container.scrollTo({
@@ -658,21 +682,21 @@ export class BotComponent {
             behavior: 'smooth' // Use smooth behavior for smooth scrolling
           });
         }, 100); // Adjust the delay as needed
-      
+
       }
 
-  });
-  setTimeout(() => {
-    const container = this.scrollContainer.nativeElement;
-    container.scrollTo({
-      top: container.scrollHeight,
-      behavior: 'smooth' // Use smooth behavior for smooth scrolling
     });
-  }, 100); // Adjust the delay as needed
+    setTimeout(() => {
+      const container = this.scrollContainer.nativeElement;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth' // Use smooth behavior for smooth scrolling
+      });
+    }, 100); // Adjust the delay as needed
 
   }
 
-  
+
   preQues3() {
     const userMessage = "What is the contact information of MHB?";
     setTimeout(() => {
@@ -687,31 +711,35 @@ export class BotComponent {
     this.chatMessages.push({ role: 'user', content: userMessage });
     // this.chatMessages.push({ role: 'bot', content: `Discover the Magic of ChatGPT's Typewriter Reply Animation. Achieve the magical typewriter animation effect like ChatGPT with SSE in JavaScript.` });
     // Clear the input field after sending the message
-   
-    
+
+    this.chatMessages.push({ role: 'bot', content: '...' });
+    this.isTextareaDisabled = true;
+  
     this._apiCallServices.getResponseFromChatbot(userMessage).subscribe(res => {
       console.log(res);
       if (res.status == "success") {
-          // setTimeout(() => {
-          //     this.spinner.hide();
-          // }, 1000);
-          // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
-          // setTimeout(function () {
-          //     window.location.href = '/thank-you'
-          // }, 1000);
-          
-    this.playFile();
-          this.chatMessages.push({ role: 'bot', content: res.response.content });
-          this.userMessage = '';
-          setTimeout(() => {
-            const container = this.scrollContainer.nativeElement;
-            container.scrollTo({
-              top: container.scrollHeight,
-              behavior: 'smooth' // Use smooth behavior for smooth scrolling
-            });
-          }, 100); // Adjust the delay as needed
-        
-      } 
+        // setTimeout(() => {
+        //     this.spinner.hide();
+        // }, 1000);
+        // this._toast.success({detail: "SUCCESS", summary: 'Form successfully submitted', position: 'br'});
+        // setTimeout(function () {
+        //     window.location.href = '/thank-you'
+        // }, 1000);
+this.chatMessages.pop();
+        this.playFile();
+        this.chatMessages.push({ role: 'bot', content: res.response.content });
+        this.userMessage = '';
+        this.isTextareaDisabled = false;
+  
+        setTimeout(() => {
+          const container = this.scrollContainer.nativeElement;
+          container.scrollTo({
+            top: container.scrollHeight,
+            behavior: 'smooth' // Use smooth behavior for smooth scrolling
+          });
+        }, 100); // Adjust the delay as needed
+
+      }
       // else if (res.status == "error") {
       //   alert(res.message);
       //   location.reload;
@@ -728,9 +756,12 @@ export class BotComponent {
         //       this.spinner.hide();
         //       window.location.reload();
         //   }, 1000);
-        
-    this.playFile();
+
+        this.chatMessages.pop();
+        this.playFile();
         this.chatMessages.push({ role: 'bot', content: `Internal server error. Please try again later.` });
+        this.isTextareaDisabled = false;
+  
         setTimeout(() => {
           const container = this.scrollContainer.nativeElement;
           container.scrollTo({
@@ -738,17 +769,17 @@ export class BotComponent {
             behavior: 'smooth' // Use smooth behavior for smooth scrolling
           });
         }, 100); // Adjust the delay as needed
-      
+
       }
 
-  });
-  setTimeout(() => {
-    const container = this.scrollContainer.nativeElement;
-    container.scrollTo({
-      top: container.scrollHeight,
-      behavior: 'smooth' // Use smooth behavior for smooth scrolling
     });
-  }, 100); // Adjust the delay as needed
+    setTimeout(() => {
+      const container = this.scrollContainer.nativeElement;
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth' // Use smooth behavior for smooth scrolling
+      });
+    }, 100); // Adjust the delay as needed
 
   }
 
