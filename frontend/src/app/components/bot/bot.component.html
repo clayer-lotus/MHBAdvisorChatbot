@@ -56,7 +56,7 @@
                     <div class="col-lg-12">
                       <div class="form-floating">
                         <input type="text" class="form-control" id="floatingInput" [(ngModel)]="formData.fullName"
-                          placeholder="Full Name" name="fullName" #fullNameRef="ngModel" ngModel required="">
+                          placeholder="Full Name" name="fullName" #fullNameRef="ngModel" autocomplete="new-password" ngModel required="" #fullNameInput>
                         <label for="floatingInput">Enter your full name</label>
                       </div>
                     </div>
@@ -143,10 +143,10 @@
                         <div class="row mt-4">
                           <div class="col-lg-12">
                             <div class="form-floating mb-4">
-                              <input type="text" class="form-control" ngx-google-places-autocomplete [options]="options"
+                              <input type="text" class="form-control"  autocomplete="new-password" ngx-google-places-autocomplete [options]="options"
                                 (onAddressChange)="handleAddressChange($event)" id="floatingInput"
                                 [(ngModel)]="formData.sessionFullStreetAddress" placeholder="Property address"
-                                name="streetAddress" #streetAddressRef="ngModel" ngModel required="">
+                                name="streetAddress" #streetAddressRef="ngModel" ngModel required="" #propertyAddressInput>
                               <label for="floatingInput">Your Property address</label>
                             </div>
                           </div>
@@ -159,17 +159,17 @@
 
                           <div class="col-lg-12">
                             <div class="form-floating mb-4">
-                              <input type="tel" class="form-control" id="floatingInput"
+                              <input type="tel" class="form-control"  autocomplete="new-password" id="floatingInput"
                                 [(ngModel)]="formData.phoneNumber" placeholder="Phone Number"
                                 [inputMask]="phoneNumberInputMask" name="phoneNumber" #phoneNumberRef="ngModel" ngModel
-                                required="">
+                                required="" #phoneInput>
                               <label for="floatingInput">Your Phone number</label>
                             </div>
                           </div>
                           <div class="col-lg-12">
                             <div class="form-floating mb-4">
                               <input type="email" class="form-control" id="floatingInput" [(ngModel)]="formData.email"
-                                placeholder="Email" name="email" #emailRef="ngModel" ngModel required="">
+                                placeholder="Email" name="email" #emailRef="ngModel" ngModel required="" #emailInput>
                               <label for="floatingInput">Your Email</label>
                             </div>
                           </div>
@@ -243,7 +243,7 @@
                             <div class="form-floating mb-4">
                               <input type="number" min="0" max="100" class="form-control" id="floatingInput"
                                 [(ngModel)]="formData2.ownedProperty" name="ownedProperty" #ownedPropertyRef="ngModel"
-                                ngModel required="">
+                                ngModel required=""  autocomplete="new-password" #ownedPropertyInput>
                               <label for="floatingInput">(in yrs)</label>
                             </div>
                           </div>
@@ -303,16 +303,16 @@
                       <div class="col-lg-6">
                         <div class="form-floating mb-4">
                           <input type="number" min="0" max="100000" class="form-control" id="floatingInput"
-                            [(ngModel)]="formData2.sizeProperty" name="sizeProperty" #sizeProperty="ngModel" ngModel
-                            required="">
+                            [(ngModel)]="formData2.sizeProperty" name="sizeProperty" #sizeProperty="ngModel"  autocomplete="new-password" ngModel
+                            required="" #sizePropertyInput>
                           <label for="floatingInput">Size of the property (sq ft)</label>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-floating mb-4">
                           <input type="number" min="0" max="100" class="form-control" id="floatingInput"
-                            [(ngModel)]="formData2.numberOfBedroom" name="numberOfBedroom" #numberOfBedroomRef="ngModel"
-                            ngModel required="">
+                            [(ngModel)]="formData2.numberOfBedroom" name="numberOfBedroom" #numberOfBedroomRef="ngModel"  autocomplete="new-password"
+                            ngModel required="" #numberOfBedroomInput>
                           <label for="floatingInput">Number of bedrooms</label>
                         </div>
                       </div>
@@ -320,7 +320,7 @@
                         <div class="form-floating mb-4">
                           <input type="number" min="0" max="100" class="form-control" id="floatingInput"
                             [(ngModel)]="formData2.numberOfBathroom" name="numberOfBathroom"
-                            #numberOfBathroomRef="ngModel" ngModel required="">
+                            #numberOfBathroomRef="ngModel"  autocomplete="new-password" ngModel required="" #numberOfBathroomInput>
                           <label for="floatingInput">Number of bathroom</label>
                         </div>
                       </div>
@@ -364,8 +364,8 @@
                       <div class="col-lg-12">
                         <div class="form-floating mb-4">
                           <textarea class="form-control" [(ngModel)]="formData2.currentCondition"
-                            name="currentCondition" #currentConditionRef="ngModel" ngModel required=""
-                            style="height: 100px"></textarea>
+                            name="currentCondition" #currentConditionRef="ngModel"  autocomplete="new-password" ngModel required=""
+                            style="height: 100px" #currentConditionInput></textarea>
 
                           <label for="floatingTextarea">Current Condition and Upgrades</label>
                         </div>
@@ -415,7 +415,7 @@
                           <div class="form-floating mb-4">
                             <input type="number" min="0" max="10000000" class="form-control" id="floatingInput"
                               [(ngModel)]="formData2.desiredSellingPrice" name="desiredSellingPrice"
-                              #desiredSellingPriceRef="ngModel" ngModel required="">
+                              #desiredSellingPriceRef="ngModel"  autocomplete="new-password" ngModel required="" #desiredSellingPriceInput>
                             <label for="floatingInput">Desired selling price (C$)</label>
                           </div>
                         </div>
@@ -479,8 +479,8 @@
                         <div class="col-lg-12">
                           <div class="form-floating mb-4">
                             <textarea class="form-control" [(ngModel)]="formData2.motiveSellProperty"
-                              name="motiveSellProperty" #motiveSellPropertyRef="ngModel" ngModel required=""
-                              style="height: 100px"></textarea>
+                              name="motiveSellProperty" #motiveSellPropertyRef="ngModel"  autocomplete="new-password" ngModel required=""
+                              style="height: 100px" #motiveSellPropertyInput></textarea>
                             <label for="floatingTextarea">Reason for Selling</label>
 
 

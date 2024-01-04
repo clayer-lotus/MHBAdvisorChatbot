@@ -11,6 +11,22 @@ import { ChatService } from 'src/app/services/chat/chat.service';
 })
 export class BotComponent {
   @ViewChild('scrollContainer', { static: false }) private scrollContainer!: ElementRef;
+
+  
+
+  @ViewChild('fullNameInput') fullNameInput!: ElementRef;
+  @ViewChild('propertyAddressInput') propertyAddressInput!: ElementRef;
+  @ViewChild('emailInput') emailInput!: ElementRef;
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  
+  @ViewChild('ownedPropertyInput') ownedPropertyInput!: ElementRef;
+  @ViewChild('sizePropertyInput') sizePropertyInput!: ElementRef;
+  @ViewChild('numberOfBedroomInput') numberOfBedroomInput!: ElementRef;
+  @ViewChild('numberOfBathroomInput') numberOfBathroomInput!: ElementRef;
+  @ViewChild('desiredSellingPriceInput') desiredSellingPriceInput!: ElementRef;
+  @ViewChild('currentConditionInput') currentConditionInput!: ElementRef;
+  @ViewChild('motiveSellPropertyInput') motiveSellPropertyInput!: ElementRef;
+
   audioFile = new Audio(
     "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3"
   );
@@ -355,6 +371,18 @@ export class BotComponent {
         behavior: 'smooth' // Use smooth behavior for smooth scrolling
       });
     }, 100); // Adjust the delay as needed
+
+   this.formData.fullName  = this.fullNameInput.nativeElement.value;
+   this.formData.email  = this.emailInput.nativeElement.value;
+   this.formData.phoneNumber  = this.phoneInput.nativeElement.value;
+   this.formData.sessionFullStreetAddress  = this.propertyAddressInput.nativeElement.value;
+   this.formData2.ownedProperty  = this.ownedPropertyInput.nativeElement.value;
+   this.formData2.sizeProperty  = this.sizePropertyInput.nativeElement.value;
+   this.formData2.numberOfBedroom  = this.numberOfBedroomInput.nativeElement.value;
+   this.formData2.numberOfBathroom  = this.numberOfBathroomInput.nativeElement.value;
+   this.formData2.desiredSellingPrice  = this.desiredSellingPriceInput.nativeElement.value;
+   this.formData2.currentCondition  = this.currentConditionInput.nativeElement.value;
+   this.formData2.motiveSellProperty  = this.motiveSellPropertyInput.nativeElement.value;
 
     this._apiCallServices.mhbAdvisorAPI(this.formData.fullName, this.formData.email, this.formData.phoneNumber, this.formData.sessionFullStreetAddress, this.formData2.ownedProperty, this.formData2.sizeProperty,
       this.formData2.numberOfBedroom, this.formData2.numberOfBathroom, this.formData2.desiredSellingPrice, this.formData2.currentCondition, this.formData2.motiveSellProperty, this.selectedPropertyType, this.selectedSellingTimeline).subscribe(res => {
