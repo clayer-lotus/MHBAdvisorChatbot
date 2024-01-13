@@ -29,3 +29,11 @@ body {
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 14px; 
 }
+
+
+@media only screen and (max-width: 600px) {
+    body, .btn{
+    font-size: 14px;
+
+    }
+  }
