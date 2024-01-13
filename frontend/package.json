@@ -22,10 +22,13 @@
     "@types/bootstrap": "^5.2.10",
     "@types/inputmask": "^5.0.7",
     "@types/jquery": "^3.5.29",
+    "cheerio": "^1.0.0-rc.12",
+    "i": "^0.3.7",
     "inputmask": "^5.0.8",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-simple-modal": "^1.4.17",
     "ngx-spinner": "^16.0.2",
+    "npm": "^10.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

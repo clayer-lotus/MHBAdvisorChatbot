@@ -46,6 +46,12 @@ export class ChatService {
     }).pipe(catchError(this.errorHandler));
   }
 
+  getCatchResponse(): Observable<any> {
+    const url = this.rootURL3 + "michael-the-home-buyer/mhb-advisor/instruction";
+
+    // Make the HTTP GET request
+    return this.http.get<any>(url);
+  }
   
   errorHandler(error: HttpErrorResponse){
     console.error(error);
