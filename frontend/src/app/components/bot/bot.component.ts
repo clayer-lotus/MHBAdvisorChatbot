@@ -35,6 +35,31 @@ export class BotComponent {
   chatMessages: { role: string, content: string }[] = [
   ];
   phoneNumberInputMask = createMask({ mask: '(999) 999-9999' });
+  currencyInputMask = createMask({
+    alias: 'numeric',
+    groupSeparator: ',',
+    digits: 0,
+    digitsOptional: false,
+    placeholder: '0',
+  });
+
+
+  numericInputMask = createMask({
+    alias: 'numeric',
+    groupSeparator: ',',
+    digits: 0,
+    digitsOptional: false,
+    placeholder: '0',
+  });
+
+  numericDecimalInputMask = createMask({
+    alias: 'numeric',
+    groupSeparator: ',',
+    digits: 2,
+    digitsOptional: false,
+    placeholder: '0',
+  });
+  
 
   formData: any = {
     sessionFullStreetAddress: '',

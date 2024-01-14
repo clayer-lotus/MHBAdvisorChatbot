@@ -208,11 +208,11 @@
                   <p class="fw-bold">Please confirm your information</p>
 
                   <ul class="my-3">
-                    <p class="fw-bold">Your Perosnal Information:</p>
-                    <p>Full Name: <i>{{this.formData.fullName}}</i></p>
-                    <p>Property Address: <i>{{this.formData.sessionFullStreetAddress}}</i> </p>
-                    <p>Contact Number: <i>{{this.formData.phoneNumber}}</i></p>
-                    <p>Email: <i>{{this.formData.email}}</i></p>
+                    <p class="fw-bold">Your Personal Information:</p>
+                    <p>Full Name: <span class="fw-bold"><i>{{this.formData.fullName}}</i></span></p>
+                    <p>Property Address: <span class="fw-bold"><i>{{this.formData.sessionFullStreetAddress}}</i></span> </p>
+                    <p>Contact Number: <span class="fw-bold"><i>{{this.formData.phoneNumber}}</i></span> </p>
+                    <p>Email: <span class="fw-bold"><i>{{this.formData.email}}</i></span></p>
 
                   </ul>
                   <button class="btn btn-success me-2" (click)="personalInformationConf()">Yes, confirmed</button>
@@ -305,25 +305,25 @@
                       </div>
                       <div class="col-lg-6">
                         <div class="form-floating mb-4">
-                          <input type="number" min="0" max="100000" class="form-control" id="floatingInput"
+                          <input type="text" class="form-control" id="floatingInput"
                             [(ngModel)]="formData2.sizeProperty" name="sizeProperty" #sizeProperty="ngModel"  autocomplete="new-password" ngModel
-                            required="" #sizePropertyInput>
+                            required="" #sizePropertyInput [inputMask]="numericDecimalInputMask" placeholder="0">
                           <label for="floatingInput">Size of the property (sq ft)</label>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-floating mb-4">
-                          <input type="number" min="0" max="100" class="form-control" id="floatingInput"
+                          <input type="text" class="form-control" id="floatingInput"
                             [(ngModel)]="formData2.numberOfBedroom" name="numberOfBedroom" #numberOfBedroomRef="ngModel"  autocomplete="new-password"
-                            ngModel required="" #numberOfBedroomInput>
+                            ngModel required="" #numberOfBedroomInput [inputMask]="numericInputMask" placeholder="0">
                           <label for="floatingInput">Number of bedrooms</label>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-floating mb-4">
-                          <input type="number" min="0" max="100" class="form-control" id="floatingInput"
+                          <input type="text" class="form-control" id="floatingInput"
                             [(ngModel)]="formData2.numberOfBathroom" name="numberOfBathroom"
-                            #numberOfBathroomRef="ngModel"  autocomplete="new-password" ngModel required="" #numberOfBathroomInput>
+                            #numberOfBathroomRef="ngModel"  autocomplete="new-password" ngModel required="" #numberOfBathroomInput [inputMask]="numericInputMask" placeholder="0">
                           <label for="floatingInput">Number of bathroom</label>
                         </div>
                       </div>
@@ -416,9 +416,9 @@
 
                         <div class="col-lg-12">
                           <div class="form-floating mb-4">
-                            <input type="number" min="0" max="10000000" class="form-control" id="floatingInput"
+                            <input type="text" class="form-control" id="floatingInput"
                               [(ngModel)]="formData2.desiredSellingPrice" name="desiredSellingPrice"
-                              #desiredSellingPriceRef="ngModel"  autocomplete="new-password" ngModel required="" #desiredSellingPriceInput>
+                              #desiredSellingPriceRef="ngModel"  autocomplete="new-password" ngModel required="" #desiredSellingPriceInput [inputMask]="currencyInputMask" placeholder="0">
                             <label for="floatingInput">Desired selling price (C$)</label>
                           </div>
                         </div>
@@ -524,27 +524,27 @@
 
                   <ul class="my-3">
                     <p class="fw-bold">Your Personal Information:</p>
-                    <p>Full Name: <i>{{this.formData.fullName}}</i></p>
-                    <p>Property Address: <i>{{this.formData.sessionFullStreetAddress}}</i> </p>
-                    <p>Contact Number: <i>{{this.formData.phoneNumber}}</i></p>
-                    <p>Email: <i>{{this.formData.email}}</i></p>
+                    <p>Full Name: <span class="fw-bold"><i>{{this.formData.fullName}}</i></span></p>
+                    <p>Property Address: <span class="fw-bold"><i>{{this.formData.sessionFullStreetAddress}}</i></span> </p>
+                    <p>Contact Number: <span class="fw-bold"><i>{{this.formData.phoneNumber}}</i></span></p>
+                    <p>Email: <span class="fw-bold"><i>{{this.formData.email}}</i></span></p>
 
                   </ul>
 
                   <ul class="mb-3">
                     <p class="fw-bold">Your Property Information:</p>
 
-                    <p>How long have you owned the property? : <i>{{formData2.ownedProperty}}</i></p>
-                    <p>Type of property : <i>{{this.selectedPropertyType}}</i></p>
-                    <p>Size of the property (sq ft) : <i>{{formData2.sizeProperty}}</i></p>
-                    <p>Number of bedrooms : <i>{{formData2.numberOfBedroom}} </i></p>
-                    <p>Number of bathroom : <i>{{formData2.numberOfBathroom}}</i></p>
-                    <p>What is your desired selling price? : <i>{{formData2.desiredSellingPrice}}</i></p>
-                    <p>What is your preferred timeline for selling? : <i>{{this.selectedSellingTimeline}}</i></p>
+                    <p>How long have you owned the property? : <span class="fw-bold"> </span><i>{{formData2.ownedProperty}}</i></p>
+                    <p>Type of property : <span class="fw-bold"><i>{{this.selectedPropertyType}}</i></span></p>
+                    <p>Size of the property (sq ft) : <span class="fw-bold"><i>{{formData2.sizeProperty}}</i></span></p>
+                    <p>Number of bedrooms : <span class="fw-bold"><i>{{formData2.numberOfBedroom}} </i></span></p>
+                    <p>Number of bathroom : <span class="fw-bold"><i>{{formData2.numberOfBathroom}}</i></span></p>
+                    <p>What is your desired selling price? : <span class="fw-bold"><i>{{formData2.desiredSellingPrice}}</i></span></p>
+                    <p>What is your preferred timeline for selling? : <span class="fw-bold"><i>{{this.selectedSellingTimeline}}</i></span></p>
                     <p>Describe the current condition
-                      of your property : <i> {{formData2.currentCondition}}</i></p>
+                      of your property : <span class="fw-bold"><i> {{formData2.currentCondition}}</i></span></p>
                     <p>What is motivating you to sell
-                      your property? : <i>{{formData2.motiveSellProperty}}</i></p>
+                      your property? : <span class="fw-bold"><i>{{formData2.motiveSellProperty}}</i></span></p>
                   </ul>
                   <button class="btn btn-success me-2" (click)="propertyInformaionConf()">Yes, confirmed</button>
                 </div>
