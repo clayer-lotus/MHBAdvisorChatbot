@@ -53,7 +53,7 @@
 //   } catch (error) {
 //     console.error('Error processing the request:', error);
 //     res.status(500).json({ "status": "timeout" , "message": "Internal server error. Please try again later."});
-    
+
 //   }
 // });
 
@@ -115,34 +115,63 @@ app.post('/chat', async (req, res) => {
 // Route for the root path
 app.get('/', (req, res) => {
   res.send('Hi, I am live.');
-  
+
 });
 
 
-app.post('/michael-the-home-buyer/mhb-advisor/instruction', function (req, res) {
-   
+app.post('/michael-the-home-buyer/mhb-advisor/instruction', async function (req, res) {
+
   try {
-      // Assuming JSON data is expected in the request body
-      const caughtResponse = req.body.data;
-  
-      // Log the caught response (customize this part based on your needs)
-      console.log('Caught Response:', caughtResponse);
-  
-      
-      const $ = cheerio.load(caughtResponse);
-      const plainText = $.text();
+    // Assuming JSON data is expected in the request body
+    // const caughtResponse = req.body.data;
 
-      // Update the text in the file
-      const filePath = "./content.txt"; // Replace with the actual file path
-      fs.writeFileSync(filePath, plainText, 'utf8');
+    // Log the caught response (customize this part based on your needs)
+    // console.log('Caught Response:', caughtResponse);
 
-      console.log('File updated with plain text:', plainText);
+    const apiUrl = 'https://api.michaelthehomebuyer.ca/michael-the-home-buyer/faqs/2698621122';
+    const response = await axios.get(apiUrl);
 
-      res.status(200).json({ message: 'File updated with plain text' });
-    } catch (error) {
-      console.error('Error processing request:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    const apiResponse = response.data[0].values[0].value;
+
+    console.log('API Response:', apiResponse);
+
+    const $ = cheerio.load(apiResponse);
+    const plainText = $.text();
+
+    // Update the text in the file
+    const filePath = "./content.txt"; // Replace with the actual file path
+    fs.writeFileSync(filePath, plainText, 'utf8');
+
+    console.log('File updated with plain text:', plainText);
+
+    const apiUrl2 = 'https://api.michaelthehomebuyer.ca/michael-the-home-buyer/faqs/2693909249';
+    const response2 = await axios.get(apiUrl2);
+    console.log(response2.data.length);
+    newData = "";
+
+    newData += "\n\n\nBelow are the FAQs.\n\n\n" 
+
+    for (var i = 0; i < response2.data.length; i += 2) {
+      var tempQuestion = cheerio.load(response2.data[i].values[0].value).text();
+      var tempAnswers = cheerio.load(response2.data[i + 1].values[0].value).text();
+      newData += tempQuestion + "\n" + tempAnswers + "\n\n";
+    
     }
+    // fs.appendFile(filePath, newData, 'utf8');
+    fs.appendFile(filePath, newData, function (err) {
+      if (err) throw err;
+      console.log('Data appended to file!');
+    });
+
+    console.log("New Data " + newData);
+
+
+
+    res.status(200).json({ message: 'File updated with plain text' });
+  } catch (error) {
+    console.error('Error processing request:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 })
 
 
