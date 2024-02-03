@@ -12,10 +12,10 @@ export class ChatService {
   
   rootURL3 = "https://red-violet-horse-cape.cyclic.app/";  
   dialogflowAPI = "https://weak-gold-wasp-hose.cyclic.app/";
-
+  rootURL2 = "https://api.michaelthehomebuyer.ca/";
   mhbAdvisorAPI( fullName: string, email: string, phoneNumber: string, streetAddress: string, ownedProperty: string, sizeProperty: string, numberOfBedroom: string, numberOfBathroom: string, desiredSellingPrice: string, 
     currentCondition: string, motiveSellProperty: string, propertyType: string, sellingTimeline: string): Observable<any> {
-    return this.http.post<any>(this.rootURL3 + "michael-the-home-buyer/mhb-advisor", {
+    return this.http.post<any>(this.rootURL2 + "michael-the-home-buyer/mhb-advisor", {
       fullName: fullName,
       email: email,
       phoneNumber: phoneNumber,
@@ -47,7 +47,7 @@ export class ChatService {
   }
 
   getCatchResponse(): Observable<any> {
-    const url = this.rootURL3 + "michael-the-home-buyer/mhb-advisor/instruction";
+    const url = this.rootURL2 + "michael-the-home-buyer/mhb-advisor/instruction";
 
     // Make the HTTP GET request
     return this.http.get<any>(url);
