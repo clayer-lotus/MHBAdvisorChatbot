@@ -10,8 +10,12 @@ export class ChatService {
 
   constructor(private http: HttpClient) { }
   
-  rootURL3 = "https://red-violet-horse-cape.cyclic.app/";  
-  dialogflowAPI = "https://weak-gold-wasp-hose.cyclic.app/";
+  // rootURL3 = "https://red-violet-horse-cape.cyclic.app/";  
+  rootURL3 = "https://api.michaelthehomebuyer.ca/"
+ // dialogflowAPI = "https://weak-gold-wasp-hose.cyclic.app/";
+
+  
+  dialogflowAPI = "https://api.michaelthehomebuyer.ca/"
 
   mhbAdvisorAPI( fullName: string, email: string, phoneNumber: string, streetAddress: string, ownedProperty: string, sizeProperty: string, numberOfBedroom: string, numberOfBathroom: string, desiredSellingPrice: string, 
     currentCondition: string, motiveSellProperty: string, propertyType: string, sellingTimeline: string): Observable<any> {
